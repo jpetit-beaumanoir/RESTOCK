@@ -1,0 +1,11 @@
+{
+    "duckdb.databases": [
+        {
+            "alias": "restock",
+            "type": "manual",
+            "sql": "ATTACH 'C:/Users/jpetit/O365/Groupe Beaumanoir/Datos Ibérica-RESTOCK - Documents/backend/db/restock.duckdb' as restock",
+            "attached": true
+        }
+    ],
+    "duckdb.defaultDatabase": "restock"
+}

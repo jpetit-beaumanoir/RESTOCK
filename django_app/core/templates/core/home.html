@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RESTOCK</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/colors.css' %}">
+
+</head>
+
+<script src="../../static/js/main.js"></script>
+<script src="../../static/js/movimientos.js"></script>
+
+<body>
+
+<header>
+    <h1>RESTOCK</h1>
+    <nav>
+        <a href="#seccion_movimientos">Movimientos</a>
+        <a href="#seccion_productos">Productos</a>
+        <a href="#seccion_centros">Centros</a>
+    </nav>
+</header>
+
+<!-- SECCIÓN DE LANZAMIENTO DE RESTOCK -->
+<div class="seccion_lanzamiento">
+
+    <!-- PRODUCTOS -->
+    <div class="card">
+       
+        <strong class="card-left">Productos</strong>
+
+        <div class="card-center">
+            
+            <div class="dropdown" data-name="temporadas">
+    
+                <div class="select">
+                    <span class="selected-text">Temporadas</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todas">Todas</li>
+                        {% for temporada in temporadas%}
+                            <li data-value="{{ temporada }}">{{ temporada }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown" data-name="colecciones">
+    
+                <div class="select">
+                    <span class="selected-text">Colecciones</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todas">Todas</li>
+                        {% for coleccion in colecciones%}
+                            <li data-value="{{ coleccion }}">{{ coleccion }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown" data-name="familias">
+    
+                <div class="select">
+                    <span class="selected-text">Familias</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todas">Todas</li>
+                        {% for familia in familias%}
+                            <li data-value="{{ familia }}">{{ familia }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown" data-name="colores">
+    
+                <div class="select">
+                    <span class="selected-text">Colores</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todos">Todos</li>
+                        {% for color in colores%}
+                            <li data-value="{{ color }}">{{ color }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-right">
+
+            <label class="chip">
+                Subir archivo
+                <input type="file" hidden>
+            </label>
+
+            <strong class="quantity" id="productos-count">0 Productos</strong>
+        </div>
+
+    </div>
+
+
+    <!-- CENTROS -->
+    <div class="card">
+        <strong class="card-left">Centros</strong>
+    
+        <div class="card-center">
+
+            <div class="dropdown" data-name="clusters">
+    
+                <div class="select">
+                    <span class="selected-text">Clusters</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todos">Todos</li>
+                        {% for cluster in clusters%}
+                            <li data-value="{{ cluster }}">{{ cluster }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown" data-name="categorias">
+    
+                <div class="select">
+                    <span class="selected-text">Categorias</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todas">Todas</li>
+                        {% for categoria in categorias%}
+                            <li data-value="{{ categoria }}">{{ categoria }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown" data-name="personal">
+    
+                <div class="select">
+                    <span class="selected-text">Personal</span>
+                    <div class="caret"></div>
+                </div>
+
+                <div class="menu">
+                    <input type="text" class="search" placeholder="Filtrar...">
+
+                    <ul class="options">
+                        <li data-value="Todos">Todos</li>
+                        {% for tipo_personal in tipos_personal%}
+                            <li data-value="{{ tipo_personal }}">{{ tipo_personal }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="actions">
+                        <button class="clear">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-right">
+
+            <label class="chip">
+                Subir archivo
+                <input type="file" hidden>
+            </label>
+
+            <strong class="quantity" id="centros-count">0 Centros</strong>
+        </div>
+
+    </div>
+
+    <!-- PARAMS -->
+    <div class="card">
+        <strong class="card-left">Parámetros</strong>
+
+        <div class="parametros">
+            <div class="param" data-name="cubrimiento_tallas">
+                <input type="number" value="75" min="0" max="100" step="1">
+                Cubrimiento de tallas %
+            </div>
+            
+            <div class="param" data-name="cobertura_maxima">
+                <input type="number" value="8" min="4" max="13" step="1">
+                Cobertura máxima
+            </div>
+
+            <div class="param" data-name="productos_maximos">
+                <input type="number" value="17" min="5" max="20" step="1">
+                Productos máximos
+            </div>
+        </div>
+    </div>
+
+    <!-- LANZAR -->
+    <div class="launch">
+        <button id="launch">LANZAR</button>
+    </div>
+
+    
+    <div id="loading_dots" class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="msg" class="msg_loading_movimientos">
+        <span>Generando movimientos...</span>
+    </div>
+
+</div>
+
+<!-- SECCIÓN DE MOVIMIENTOS -->
+<div id="seccion_movimientos" class="seccion_movimientos">
+    <div class="movimientos_bg">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>RECEPTORES</h2>
+            <ul class="receptores">
+                <li class="active">Preciados</li>
+                <li>Sanchinarro</li>
+                <li>Princesa</li>
+                <li>Pozuelo</li>
+                <li>Goya</li>
+                <li>Bercial</li>
+            </ul>
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="contenido">
+
+            <!-- CABECERA -->
+            <div class="resumen">
+                <div class="box enviar active">
+                    <strong>54</strong>
+                    <span>A ENVIAR</span>
+                </div>
+
+                <div class="box recibir">
+                    <strong>35</strong>
+                    <span>A RECIBIR</span>
+                </div>
+            </div>
+
+            <!-- GRID -->
+            <div class="grid">
+
+                <div class="card_producto">
+                    <!-- ICONO IZQUIERDA -->
+                    <img src="https://content.morgandetoi.fr/el-corte-ingles/1105840-931-F.jpg" class="product_img">
+
+                    <!-- INFO -->
+                    <div class="info">
+                        <div class="top">
+                            <strong>261-RELOW</strong>
+                            <span class="ref" data-text="1105804">1105804</span>
+                        </div>
+
+                        <div class="middle">
+                            <strong>MARINE/OFF WHITE</strong>
+                            <span class="ref" data-text="926">926</span>
+                        </div>
+
+                        <div class="bottom">
+                            2XL, L, 2M, S
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card_producto">
+                    <!-- ICONO IZQUIERDA -->
+                    <img src="https://content.morgandetoi.fr/el-corte-ingles/1105841-1166-F.jpg" class="product_img">
+
+                    <!-- INFO -->
+                    <div class="info">
+                        <div class="top">
+                            <strong>261-DJUICY</strong>
+                            <span class="ref" data-text="1105841">1105841</span>
+                        </div>
+
+                        <div class="middle">
+                            <strong>BUBBLE M</strong>
+                            <span class="ref" data-text="1166">1166</span>
+                        </div>
+
+                        <div class="bottom">
+                            2L, M, S, 2XS
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card_producto">
+                    <!-- ICONO IZQUIERDA -->
+                    <img src="https://content.morgandetoi.fr/el-corte-ingles/1107197-1145-F.jpg" class="product_img">
+
+                    <!-- INFO -->
+                    <div class="info">
+                        <div class="top">
+                            <strong>261-DAHO</strong>
+                            <span class="ref" data-text="1107197">1107197</span>
+                        </div>
+
+                        <div class="middle">
+                            <strong>CAPERS</strong>
+                            <span class="ref" data-text="1145">1145</span>
+                        </div>
+
+                        <div class="bottom">
+                            2XL, L, 2M, S
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CODIGO PARA MOSTRAR LA IMAGEN DEL PRODUCTO EN GRANDE -->
+    <div id="modal" class="modal">
+        <span id="close">&times;</span>
+        <img id="modal_img">
+    </div>
+</div>
+
+<!-- SECCIÓN DE VISUALIZACION DE PRODUCTOS -->
+<div id="seccion_productos" class="seccion_productos">
+
+</div>
+
+<!-- SECCIÓN DE VISUALIZACION DE CENTROS -->
+<div id="seccion_centros" class="seccion_centros">
+
+</div>
+
+</body>
+</html>

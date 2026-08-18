@@ -1,0 +1,29 @@
+1. Preparació dels fitxers
+
+	- Guarda els dos fitxers de palmarès enviats per la Vanessa a la carpeta següent:
+		"Datos Ibérica-RESTOCK - Documents/backend/palmares"
+	- Si ja existeix algun fitxer en aquesta carpeta, elimina’l abans de guardar els nous.
+
+2. Connexió
+	- Connecta't al FortiClient
+	
+3. Execució del procés
+	- Obre el cmd
+	- Executa les següents comandes:
+		1. cd "C:/Users/%USUARIO%/O365/Groupe Beaumanoir/Datos Ibérica-RESTOCK - Documents"
+		2. python main.py
+
+4. Resultats
+	- Un cop finalitzat el procés, trobaràs els resultats a la carpeta:
+		"/resultados"
+
+5. Validació de dades
+	- Obre l'arxiu Excel (.xlsx) generat.
+	- Revisa els registres i elimina aquells moviments que no s'hagin de realitzar.
+
+6. Generació de mails
+	- Quan els mobiments estiguin validats, torna al mateix cmd i executa:
+		"python generar_html_mails.py"
+
+7. Enviament automàtic
+	- Els correus s'enviaran automaticament a les botigues mitjançant un flux de Power Automate

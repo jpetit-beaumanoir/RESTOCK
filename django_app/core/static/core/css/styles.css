@@ -1,0 +1,585 @@
+@font-face {
+    font-family: 'Glacial Indifference';
+    src: url("/static/core/fonts/glacial-indifference.regular.otf") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: 'Glacial Indifference';
+    background: linear-gradient(135deg, var(--color-secundario), #d96f66);
+    color: var(--blanco);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: var(--color-fondo);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    margin: 0;
+    letter-spacing: 2px;
+    font-size: 3em;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+nav a {
+    margin-left: 50px;
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+    font-size: 1.1em;
+}
+
+nav a:hover {
+    opacity: 0.8;
+    font-size: 1.2em;
+}
+
+/********************************************************************/
+/* SECCIÓN DE LANZAMIENTO DE RESTOCK */
+.seccion_lanzamiento {
+    padding: 30px 50px;
+}
+
+/* CARDS */
+.card {
+    background: var(--color-primario);
+    padding: 30px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 💡 profundidad */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* TITULO IZQUIERDA */
+.card-left {
+    font-size: 2em;
+    min-width: 150px;
+}
+
+/* ZONA CENTRAL */
+.card-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin-left: 5%;
+    flex: 1;
+}
+
+/*------*/
+.dropdown {
+    min-width: 15em;
+    position: relative;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+/* BOTÓN PRINCIPAL */
+.select {
+    background: var(--color-terciario);
+    color: var(--blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select:hover {
+    background: var(--color-secundario);
+}
+
+/* CUANDO ESTÁ ABIERTO */
+.select-clicked {
+    border: 2px solid var(--color-secundario);
+    box-shadow: 0 0 0.8em var(--color-secundario);
+}
+
+/* FLECHITA */
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--blanco);
+    transition: 0.3s;
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+/* DROPDOWN */
+.menu {
+    list-style: none;
+    padding: 0.5em;
+    background: var(--color-terciario);
+    border-radius: 0.5em;
+    box-shadow: 0 0.5em 1em var(--color-contraste);
+    color: var(--blanco);
+    position: absolute;
+    top: 3.5em;
+    width: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.menu-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BUSCADOR */
+.search {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+}
+
+/* LISTA OPCIONES */
+.options {
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+}
+
+/* ITEM */
+.options li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* HOVER */
+.options li:hover {
+    background: var(--color-secundario);
+}
+
+/* SELECCIONADO (MULTI) */
+.options li.selected {
+    background: var(--color-primario);
+}
+
+/* SCROLL bonito (opcional) */
+.options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.options::-webkit-scrollbar-thumb {
+    background: var(--color-secundario);
+    border-radius: 10px;
+}
+
+/* BLOQUE ACCIONES */
+.actions {
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: center;
+}
+
+/* BOTONES */
+.actions button {
+    padding: 0.4em 0.8em;
+    width: 100%;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    background: var(--color-fondo);
+    color: var(--blanco);
+    transition: 0.2s;
+}
+
+.actions button:hover {
+    background: var(--color-secundario);
+}
+/*------*/
+
+/* CHIPS */
+.chip {
+    background: var(--color-terciario);
+    border: none;
+    padding: 7px 12px;
+    border-radius: 12px;
+    color: var(--blanco);
+    font-size: 1.2em;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.chip:hover {
+    background: var(--color-fondo);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+/* SELECT BONITO */
+select.chip {
+    appearance: none;
+}
+
+/* DERECHA */
+.card-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* UPLOAD */
+.upload {
+    cursor: pointer;
+}
+
+/* NUMERO */
+.quantity {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* PARAMETROS */
+.parametros {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+    gap: 40px;
+    flex: 1;
+}
+
+/* BLOQUE PARAM */
+.param {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    color: var(--blanco);
+}
+
+/* INPUT ESTILO DROPDOWN */
+.param input {
+    width: 80px;
+    padding: 10px 5px;
+
+    background: var(--color-terciario);
+    color: var(--blanco);
+
+    border: 2px solid var(--color-primario);
+    border-radius: 10px;
+
+    text-align: center;
+    font-size: 1.2em;
+
+    transition: 0.2s;
+}
+
+/* HOVER */
+.param input:hover {
+    background: var(--color-secundario);
+}
+
+/* FOCUS (CLAVE: mismo efecto que dropdown) */
+.param input:focus {
+    outline: none;
+    border: 2px solid var(--color-secundario);
+    box-shadow: 0 0 0.6em var(--color-secundario);
+}
+
+/* QUITAR FLECHAS (OPCIONAL, más limpio) */
+.param input::-webkit-outer-spin-button,
+.param input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.param input[type=number] {
+    appearance: textfield;
+}
+
+/* BOTON */
+.launch {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.launch button {
+    background: var(--color-fondo);
+    color: var(--blanco);
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 60px;
+    cursor: pointer;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+.launch button:hover {
+    transform: scale(1.05);
+}
+
+.dots {
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dots span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    background: var(--color-contraste);
+    border-radius: 50%;
+    animation: bounce 1.2s infinite ease-in-out both;
+}
+
+.dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+.msg_loading_movimientos {
+    text-align: center;
+    display: none;
+}
+/********************************************************************/
+/* SECCION MOVIMIENTOS */
+
+.seccion_movimientos {
+    display: none;
+}
+
+.movimientos_bg {
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 200px;
+    background: var(--color-terciario);
+    padding-left: 20px;
+    padding-top: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.sidebar h2 {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.receptores {
+    list-style: none;
+    padding: 0;
+}
+
+.receptores li {
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+}
+
+.receptores li:hover {
+    background: var(--color-primario);
+}
+
+.receptores .active {
+    background: var(--color-fondo);
+}
+
+/* CONTENIDO */
+.contenido {
+    background: var(--color-fondo);
+    flex: 1;  
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* CABECERA */
+.resumen {
+    display: flex;
+    justify-content: center;
+    gap: 25%;
+    font-weight: bold;
+}
+
+.box {
+    padding: 15px 30px;
+    margin-top: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.box:hover {
+    background: var(--color-secundario);
+}
+
+.box strong {
+    font-size: 2em;
+    display: block;
+}
+
+.box.active {
+    background: var(--color-terciario);
+}
+
+/* GRID */
+.grid {
+    background: var(--color-terciario);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.card_producto {
+    background: var(--color-primario);
+    height: 200px;
+    border-radius: 15px;
+    margin: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 20px;
+    color: var(--blanco);
+}
+
+.product_img {
+    width: 30%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.info {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20%;
+    margin-left: 5%;
+}
+
+.top {
+    font-weight: bold;
+    font-size: 1.7em;
+}
+.top span {
+    margin-left: 10px;
+    font-size: 0.7em;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.middle {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.middle span {
+    margin-left: 10px;
+    font-size: 0.8em;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.bottom {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.ref {
+    transition: 
+    color 0.5s ease,
+    opacity 0.5s ease,
+    transform 0.1s ease;
+}
+
+/********************************************************************/
+
+/*********** CSS GENERICO ***********/
+/* VER IMAGEN EN GRANDE */
+.modal {
+    display: none; /* oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEN GRANDE */
+#modal_img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+/* BOTON CERRAR */
+#close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+/****/
